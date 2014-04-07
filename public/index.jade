@@ -1,0 +1,8 @@
+ul#apps
+
+script#app(type="text/html")
+  li
+    a.logo(href="apps/?source={{ repository }}")
+      img(src="{{ logo }}")
+    h2 {{ name }}
+    p {{ description }}

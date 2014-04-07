@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    //- Stylesheets
+    link(href="styles/styles.css", rel="stylesheet")
+
+    //- Javascripts
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js")
+    //- script(src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10.3/ICanHaz.min.js")
+    script(src="scripts/app-manifest.js")
+    script(src="scripts/app.js")
+
+  body
+    != yield
