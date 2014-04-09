@@ -24,7 +24,6 @@ app.configure(function(){
 })
 
 app.get('/', passport.ensureAuthenticated, function(req, res) {
-  console.log('got /')
   res.render('index', {})
 })
 
@@ -39,13 +38,8 @@ app.get("/auth/heroku/callback", passport.authenticate("heroku", {
 })
 
 app.post('/go', passport.ensureAuthenticated, function(req, res) {
-  console.log('post /go', req)
+  // Hi Clem. Where's the oauth token right now?
 })
-
-// app.get("/logout", function(req, res) {
-//   req.logout()
-//   res.redirect("/")
-// })
 
 app.listen(app.get("port"), function() {
   console.log("Clone is running at localhost:" + app.get("port"))

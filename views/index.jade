@@ -12,3 +12,5 @@ block content
       h2 {{name}}
       p {{description}}
       form(method="POST" action="/go")
+        input(type="hidden" name="source" value="{{repository}}")
+        input(type="submit" value="Deploy")
