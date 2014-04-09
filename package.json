@@ -1,0 +1,31 @@
+{
+  "name": "clone",
+  "version": "0.1.1",
+  "description": "A node/harp app for displaying and cloning app.json apps",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/clone.git"
+  },
+  "keywords": [
+    "app.json",
+    "heroku"
+  ],
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heroku/clone/issues"
+  },
+  "homepage": "https://github.com/heroku/clone",
+  "dependencies": {
+    "express": "^3.5.1",
+    "harp": "^0.12.1",
+    "logfmt": "^1.1.2",
+    "passport": "^0.2.0",
+    "passport-heroku": "0.0.2",
+    "jade": "^1.3.1"
+  }
+}
