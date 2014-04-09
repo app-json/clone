@@ -39,6 +39,7 @@ app.get("/auth/heroku/callback", passport.authenticate("heroku", {
 
 app.post('/go', passport.ensureAuthenticated, function(req, res) {
   // Hi Clem. Where's the oauth token right now?
+  // I'm not sure Zeke I haven't used passport for authentication
 })
 
 app.listen(app.get("port"), function() {
