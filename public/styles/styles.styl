@@ -24,6 +24,8 @@ textColor = #666
 appBackgroundColor = #FFF
 desktopWidth = 1000px
 buttonColor = g1
+headingColor = #333
+linkColor = g1
 
 // Layout
 //---------------------------------------------------------
@@ -43,13 +45,14 @@ body
   padding 0
   color textColor
 
-  background: rgb(69,61,128)
-  background: -moz-linear-gradient(top,  g1 0%,  g2 100%)
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
-  background: -webkit-linear-gradient(top,  g1 0%, g2 100%)
-  background: -o-linear-gradient(top,  g1 0%, g2 100%)
-  background: -ms-linear-gradient(top,  g1 0%, g2 100%)
-  background: linear-gradient(to bottom,  g1 0%, g2 100%)
+  background rgb(69,61,128)
+  background -moz-linear-gradient(top,  g1 0%,  g2 100%)
+  background -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
+  background -webkit-linear-gradient(top,  g1 0%, g2 100%)
+  background -o-linear-gradient(top,  g1 0%, g2 100%)
+  background -ms-linear-gradient(top,  g1 0%, g2 100%)
+  background linear-gradient(to bottom,  g1 0%, g2 100%)
+  background #603F8B
 
 section
   // position relative
@@ -77,6 +80,7 @@ ul#apps
     box-shadow         0px 2px 4px 0px rgba(50, 50, 50, 0.5)
 
     a.logo
+      cursor pointer
       display block
       position relative
       width 280px
@@ -95,49 +99,56 @@ ul#apps
       transform translate(-50%, -50%)
       overflow hidden
 
+    div.meta
+      padding 0 15px
+
+    div.drawer
+      padding-bottom 15px
+
     h2
-      // text-align center
-      font-size 18px
-      padding 0 20px
+      font-size 16px
       font-weight bold
       color headingColor
       a
         color headingColor
 
     p
-      padding 0 20px
+      padding 0
       font-weight normal
       font-size 14px
       opacity 0.9
       line-height 1.4
+      a
+        color linkColor
 
     form
-      padding 0 20px
+      padding 0
       input
         outline none
         border none
-        background buttonColor
+        width 100%
+        text-align center
+        background #999
         color white
         display inline-block
         position relative
         -webkit-border-radius 2px
         -moz-border-radius 2px
         border-radius 5px
-        font-size 12px
+        font-size 14px
         font-weight normal
-        line-height 2em
-        /* letter-spacing 0.05em */
-        padding 3px 8px
-        // text-shadow 0 -1px 0 rgba(0, 0, 0, 0.35)
+        line-height 2.5
+        cursor pointer
+        transition 0.3s all
+        &:hover
+          background buttonColor
 
-        // background -webkit-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
-        // background -moz-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
-        // background -ms-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
-        // background -o-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
-        // background linear-gradient(180deg, #b274ff 0, #8b30fb 100%)
+    div.drawer
+      display none
 
-        // box-shadow inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1), -1px 0 0 rgba(0, 0, 0, 0.1), 1px 0 0 rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.35)
-
+    &.active
+      div.drawer
+        display block
 
 
 a

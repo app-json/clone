@@ -41,36 +41,16 @@ app.get('/', function(req, res) {
 })
 
 app.post('/go', function(req, res) {
-
   var user = require('github-url-to-object')(req.body.source).user
   var repo = require('github-url-to-object')(req.body.source).repo
   var tarball="https://codeload.github.com/" + user + "/" + repo + "/legacy.tar.gz/master"
-
-  // res.json({source_blob:{url:tarball}})
-
   superagent
     .post('https://nyata.herokuapp.com/builds')
     .auth('', req['heroku-bouncer'].token)
     .send({source_blob:{url:tarball}})
     .end(function(buildRes){
-      res.json(buildRes)
+      res.json(buildRes.body)
     })
-
-
-// {
-//   "id": "70443c12-1e3a-4c2a-b5ae-49bbd35336d2",
-//   "status": "pending",
-//   "app": {
-//     "id": "a5455e82-c354-40f1-9866-f0cb4e75ca4b",
-//     "name": "stormy-tor-2953"
-//   },
-//   "build": {
-//     "id": null,
-//     "status": null
-//   },
-//   "manifest_errors": []
-// }
-
 })
 
 app.listen(app.get("port"), function() {
