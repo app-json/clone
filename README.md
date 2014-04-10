@@ -21,13 +21,10 @@ have timed out. You'll need to hit
 [http://clone.herokuapp.com/auth/heroku/logout](clone.herokuapp.com/auth/heroku/logout)
 to log out and log back in with a new token.
 
-## Use it
-
-If you don't already have node installed, [go to nodejs.org](http://nodejs.org/)
-and click "Install". Easy peasy.
+## Run it locally
 
 ```sh
-npm install harp --global
-cd clone
-harp server
+npm install
+cp .env.sample .env # then add missing values
+foreman run npm start
 ```
