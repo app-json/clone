@@ -2,6 +2,8 @@
 
 A simple UI for cloning app.json apps.
 
+![http://cl.ly/image/17063j3Z2X3s/Screen%20Shot%202014-04-09%20at%209.19.43%20PM.png](http://cl.ly/image/17063j3Z2X3s/Screen%20Shot%202014-04-09%20at%209.19.43%20PM.png/content#.png)
+
 - Clone is a node app that uses harp for javascript and css compilation.
 - Clone strives to do most of its work in the browser, but does some server-side work
 to include your Heroku OAuth token (API key) when sending build requests to [nyata](https://github.com/heroku/nyata).
