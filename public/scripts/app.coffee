@@ -26,11 +26,3 @@ $ ->
     build_xhr.done (build) =>
       console.log "build started:", build, $(this)
       $(this).closest('.app').find('.output').append(ich.build_result(build))
-
-    # ).fail(->
-    #   console.log "error"
-    #   return
-    # ).always(->
-    #   console.log "finished"
-    #   return
-    # ))
