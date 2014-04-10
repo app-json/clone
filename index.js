@@ -1,45 +1,76 @@
-var passport  = require("./lib/passport-config")
+var superagent = require("superagent")
 var logfmt = require("logfmt")
 var express = require("express")
 var harp = require("harp")
 var app = express()
+var bouncer = require('heroku-bouncer')({
+  herokuOAuthID      : process.env.HEROKU_OAUTH_ID,
+  herokuOAuthSecret  : process.env.HEROKU_OAUTH_SECRET,
+  herokuBouncerSecret: process.env.BOUNCER_SECRET
+})
 
 app.configure(function(){
   app.set("port", (process.env.PORT || 5000))
-  if (process.env.NODE_ENV !== "test") {
+  app.set('view engine', 'jade')
+
+  if (process.env.NODE_ENV !== "test")
     app.use(logfmt.requestLogger())
-  }
-  app.use(express.cookieParser())
   app.use(express.json())
   app.use(express.urlencoded())
   app.use(express.methodOverride())
-  app.use(express.session({
-    secret: process.env.SESSION_SECRET || "fooby dooby"
+
+  app.use(express.cookieParser(process.env.COOKIE_SECRET))
+  app.use(express.cookieSession({
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      path    : '/',
+      signed  : true,
+      httpOnly: true,
+      maxAge  : null
+    }
   }))
-  app.use(passport.initialize())
-  app.use(passport.session())
+
+  app.use(bouncer.middleware)
+  app.use(bouncer.router)
   app.use(express.static(__dirname + "/public"))
   app.use(harp.mount(__dirname + "/public"))
-  app.set('view engine', 'jade')
 })
 
-app.get('/', passport.ensureAuthenticated, function(req, res) {
-  res.render('index', {})
+app.get('/', function(req, res) {
+  res.render('index')
 })
 
-app.get("/auth/heroku", passport.authenticate("heroku"), function(req, res) {
-  // noop
-})
+app.post('/go', function(req, res) {
 
-app.get("/auth/heroku/callback", passport.authenticate("heroku", {
-  failureRedirect: "/login"
-}), function(req, res) {
-  res.redirect("/")
-})
+  var user = require('github-url-to-object')(req.body.source).user
+  var repo = require('github-url-to-object')(req.body.source).repo
+  var tarball="https://codeload.github.com/" + user + "/" + repo + "/legacy.tar.gz/master"
 
-app.post('/go', passport.ensureAuthenticated, function(req, res) {
-  // Hi Clem. Where's the oauth token right now?
-  // I'm not sure Zeke I haven't used passport for authentication
+  // res.json({source_blob:{url:tarball}})
+
+  superagent
+    .post('https://nyata.herokuapp.com/builds')
+    .auth('', req['heroku-bouncer'].token)
+    .send({source_blob:{url:tarball}})
+    .end(function(buildRes){
+      res.json(buildRes)
+    })
+
+
+// {
+//   "id": "70443c12-1e3a-4c2a-b5ae-49bbd35336d2",
+//   "status": "pending",
+//   "app": {
+//     "id": "a5455e82-c354-40f1-9866-f0cb4e75ca4b",
+//     "name": "stormy-tor-2953"
+//   },
+//   "build": {
+//     "id": null,
+//     "status": null
+//   },
+//   "manifest_errors": []
+// }
+
 })
 
 app.listen(app.get("port"), function() {

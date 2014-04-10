@@ -11,6 +11,6 @@ block content
         img(src="{{logo}}")
       h2 {{name}}
       p {{description}}
-      form(method="POST" action="/go")
+      form.deploy
         input(type="hidden" name="source" value="{{repository}}")
         input(type="submit" value="Deploy")

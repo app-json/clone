@@ -15,11 +15,15 @@
 // https://s3.amazonaws.com/design.heroku/logos/heroku-mark-purple.svg
 // https://s3.amazonaws.com/design.heroku/logos/heroku-mark-white.svg
 
-backgroundColor = #CCC
+g1 = rgba(69,61,128,1)
+g2 = rgba(99,64,140,1)
+
+backgroundColor = rgba(#6762A6, 0.4)
 // textColor = #53397C
 textColor = #666
 appBackgroundColor = #FFF
 desktopWidth = 1000px
+buttonColor = g1
 
 // Layout
 //---------------------------------------------------------
@@ -38,7 +42,14 @@ body
   margin 0
   padding 0
   color textColor
-  background backgroundColor
+
+  background: rgb(69,61,128)
+  background: -moz-linear-gradient(top,  g1 0%,  g2 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
+  background: -webkit-linear-gradient(top,  g1 0%, g2 100%)
+  background: -o-linear-gradient(top,  g1 0%, g2 100%)
+  background: -ms-linear-gradient(top,  g1 0%, g2 100%)
+  background: linear-gradient(to bottom,  g1 0%, g2 100%)
 
 section
   // position relative
@@ -50,7 +61,7 @@ section
 ul#apps
   display block
   float none
-  margin 60px 20px 60px 20px
+  margin 20px
   padding 0
 
   > li
@@ -61,9 +72,9 @@ ul#apps
     position relative
     border-radius 5px
     list-style none
-    -webkit-box-shadow 0px 3px 6px 0px rgba(50, 50, 50, 0.5)
-    -moz-box-shadow    0px 3px 6px 0px rgba(50, 50, 50, 0.5)
-    box-shadow         0px 3px 6px 0px rgba(50, 50, 50, 0.5)
+    -webkit-box-shadow 0px 2px 4px 0px rgba(50, 50, 50, 0.5)
+    -moz-box-shadow    0px 2px 4px 0px rgba(50, 50, 50, 0.5)
+    box-shadow         0px 2px 4px 0px rgba(50, 50, 50, 0.5)
 
     a.logo
       display block
@@ -89,6 +100,9 @@ ul#apps
       font-size 18px
       padding 0 20px
       font-weight bold
+      color headingColor
+      a
+        color headingColor
 
     p
       padding 0 20px
@@ -96,6 +110,34 @@ ul#apps
       font-size 14px
       opacity 0.9
       line-height 1.4
+
+    form
+      padding 0 20px
+      input
+        outline none
+        border none
+        background buttonColor
+        color white
+        display inline-block
+        position relative
+        -webkit-border-radius 2px
+        -moz-border-radius 2px
+        border-radius 5px
+        font-size 12px
+        font-weight normal
+        line-height 2em
+        /* letter-spacing 0.05em */
+        padding 3px 8px
+        // text-shadow 0 -1px 0 rgba(0, 0, 0, 0.35)
+
+        // background -webkit-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
+        // background -moz-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
+        // background -ms-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
+        // background -o-linear-gradient(270deg, #b274ff 0, #8b30fb 100%)
+        // background linear-gradient(180deg, #b274ff 0, #8b30fb 100%)
+
+        // box-shadow inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1), -1px 0 0 rgba(0, 0, 0, 0.1), 1px 0 0 rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.35)
+
 
 
 a
