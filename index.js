@@ -44,11 +44,15 @@ app.post('/go', function(req, res) {
   var user = require('github-url-to-object')(req.body.source).user
   var repo = require('github-url-to-object')(req.body.source).repo
   var tarball="https://codeload.github.com/" + user + "/" + repo + "/legacy.tar.gz/master"
+
+  console.log ({source_blob:{url:tarball}})
+
   superagent
-    .post('https://nyata.herokuapp.com/builds')
+    .post('https://nyata.herokuapp.com/app-setups')
     .auth('', req['heroku-bouncer'].token)
     .send({source_blob:{url:tarball}})
     .end(function(buildRes){
+      console.log("buildRes.body", buildRes.body)
       res.json(buildRes.body)
     })
 })

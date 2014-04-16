@@ -23,7 +23,7 @@ backgroundColor = rgba(#6762A6, 0.4)
 textColor = #666
 appBackgroundColor = #FFF
 desktopWidth = 1000px
-buttonColor = g1
+buttonColor = g2
 headingColor = #333
 linkColor = g1
 
@@ -52,7 +52,7 @@ body
   background -o-linear-gradient(top,  g1 0%, g2 100%)
   background -ms-linear-gradient(top,  g1 0%, g2 100%)
   background linear-gradient(to bottom,  g1 0%, g2 100%)
-  background #603F8B
+  // background #603F8B
 
 section
   // position relative
@@ -78,6 +78,12 @@ ul#apps
     -webkit-box-shadow 0px 2px 4px 0px rgba(50, 50, 50, 0.5)
     -moz-box-shadow    0px 2px 4px 0px rgba(50, 50, 50, 0.5)
     box-shadow         0px 2px 4px 0px rgba(50, 50, 50, 0.5)
+    transition all 0.3s
+
+    &.active
+      -webkit-box-shadow 0px 2px 20px 10px rgba(50, 50, 50, 0.5)
+      -moz-box-shadow    0px 2px 20px 10px rgba(50, 50, 50, 0.5)
+      box-shadow         0px 2px 20px 10px rgba(50, 50, 50, 0.5)
 
     a.logo
       cursor pointer
@@ -102,15 +108,25 @@ ul#apps
     div.meta
       padding 0 15px
 
-    div.drawer
-      padding-bottom 15px
-
     h2
       font-size 16px
       font-weight bold
       color headingColor
       a
         color headingColor
+        text-decoration none
+
+    div.drawer
+      // background green
+      transition all 0.3s
+      max-height 0
+      overflow hidden
+      margin-bottom 0
+
+    &.active
+      div.drawer
+        max-height 1000px
+        margin-bottom 15px
 
     p
       padding 0
@@ -139,16 +155,9 @@ ul#apps
         font-weight normal
         line-height 2.5
         cursor pointer
-        transition 0.3s all
+        // transition 0.3s all
         &:hover
           background buttonColor
-
-    div.drawer
-      display none
-
-    &.active
-      div.drawer
-        display block
 
 
 a

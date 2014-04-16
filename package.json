@@ -4,7 +4,8 @@
   "description": "A node/harp app for displaying and cloning app.json apps",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "fetch-app-module": "curl https://raw.githubusercontent.com/heroku/apps/master/dist/app.js > ./public/scripts/vendor/app.js"
   },
   "repository": {
     "type": "git",
