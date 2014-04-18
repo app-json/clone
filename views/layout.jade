@@ -46,7 +46,21 @@ script#app(type="text/html")
 
         p {{description}}
 
+        {{#repository}}
+        a.repository(href="{{repository}}") {{repository}}
+        {{/repository}}
 
+        {{#website}}
+        a.website(href="{{website}}") {{website}}
+        {{/website}} 
+
+        //- {{#prices}}
+        //- h3 Addons
+        //- ul.prices
+        //- {{#plans}}
+        //- li Plan
+        //- {{/plans}}
+        //- {{/prices}}
 
         form.deploy
           input(type="hidden" name="source" value="{{repository}}")

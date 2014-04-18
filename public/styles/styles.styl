@@ -17,9 +17,6 @@
 
 g1 = rgba(69,61,128,1)
 g2 = rgba(99,64,140,1)
-
-// textColor = #53397C
-
 backgroundColor = rgba(#6762A6, 0.4)
 appBackgroundColor = #FFF
 headingColor = #FFF
@@ -29,10 +26,8 @@ buttonColor = g2
 linkColor = g1
 
 desktopWidth = 1000px
-
 appCardWidth = 280px
 appLogoWidth = 200px
-
 appCardWidthSingle = 480px
 appLogoWidthSingle = 400px
 
@@ -62,6 +57,9 @@ body
   // background -ms-linear-gradient(top,  g1 0%, g2 100%)
   // background linear-gradient(to bottom,  g1 0%, g2 100%)
   background #603F8B
+
+section
+  position relative
 
 header
   float none
@@ -98,6 +96,18 @@ ul#apps
   float none
   margin 20px
   padding 0
+
+  &.single
+    // position relative
+    // margin auto 0
+    -webkit-transform translateX(-50%)
+    -moz-transform translateX(-50%)
+    transform translateX(-50%)
+    transition all 0.3s
+    position absolute
+    top 40px
+    left 50%
+
 
   > li
     background #EEE
@@ -147,6 +157,13 @@ ul#apps
       a
         color appHeadingColor
         text-decoration none
+
+        display block
+        width appLogoWidth
+        text-overflow ellipsis
+        overflow hidden
+        white-space nowrap
+        // display none
 
     div.drawer
       // background green

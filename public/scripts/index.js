@@ -8,14 +8,14 @@ if (repo) {
   repos.push([repo[1], repo[2]].join("/"))
 } else {
   repos.push(
-    'zeke/chaos-monkey-app-manifest',
-    'zeke/roots-buildpack-sample',
     'heroku-examples/geosockets',
+    'heroku/node-js-sample',
+    'ryanbrainard/forceworkbench',
     'zeke/harp-slideshow-template',
     'zeke/ruby-rails-sample',
     'zeke/hound',
-    'ryanbrainard/forceworkbench',
-    'heroku/node-js-sample'
+    'zeke/chaos-monkey-app-manifest',
+    'zeke/roots-buildpack-sample'
   )
 }
 
