@@ -37,11 +37,18 @@ $(function() {
 
     return build_xhr.done((function(_this) {
       return function(build) {
-        console.log("build started:", build, $(_this))
-        $(_this)
-          .closest('.app')
-          .find('.output')
-          .append(ich.buildresult(build))
+        console.log(build)
+        if (build.app && build.app.name) {
+          $(_this)
+            .closest('.app')
+            .find('.output')
+            .html(ich.buildSuccess(build))
+        } else {
+          $(_this)
+            .closest('.app')
+            .find('.output')
+            .text(JSON.stringify(build,null,2))
+        }
       }
     })(this))
   })

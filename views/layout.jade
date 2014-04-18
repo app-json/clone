@@ -29,3 +29,32 @@ html
 
     section
       block content
+
+
+script#app(type="text/html")
+
+  li.app
+
+    a.logo.activator
+      img(src="{{logo}}")
+
+    div.meta
+      h2
+        a.activator {{name}}
+
+      div.drawer
+
+        p {{description}}
+
+        form.deploy
+          input(type="hidden" name="source" value="{{repository}}")
+          input(type="submit" value="Deploy")
+
+        div.output
+
+script#buildSuccess(type="text/html")
+
+  p
+    | Your app is deploying to &nbsp;
+    a(href="https://{{app.name}}.herokuapp.com"){{app.name}}.herokuapp.com
+    | , and will be ready soon.
