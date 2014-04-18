@@ -18,14 +18,17 @@
 g1 = rgba(69,61,128,1)
 g2 = rgba(99,64,140,1)
 
-backgroundColor = rgba(#6762A6, 0.4)
 // textColor = #53397C
-textColor = #666
+
+backgroundColor = rgba(#6762A6, 0.4)
 appBackgroundColor = #FFF
-desktopWidth = 1000px
+headingColor = #FFF
+textColor = #666
+appHeadingColor = #333
 buttonColor = g2
-headingColor = #333
 linkColor = g1
+
+desktopWidth = 1000px
 
 // Layout
 //---------------------------------------------------------
@@ -60,6 +63,36 @@ section
   // max-width desktopWidth
   // padding 0
   // background black
+
+header
+  float none
+  overflow hidden
+  // background black
+  padding 30px 40px 0 40px
+
+  h1
+    float left
+    font-weight normal
+    font-size 22px
+    color headingColor
+    line-height 1
+    margin 0
+    padding 0
+    a
+      color headingColor
+      span
+        opacity 0.6
+
+    // display inline-block
+  ul
+    list-style none
+    // display inline-block
+    float right
+    margin 0
+    padding 0
+    > li
+      a
+        color headingColor
 
 ul#apps
   display block
@@ -111,9 +144,9 @@ ul#apps
     h2
       font-size 16px
       font-weight bold
-      color headingColor
+      color appHeadingColor
       a
-        color headingColor
+        color appHeadingColor
         text-decoration none
 
     div.drawer
@@ -155,10 +188,11 @@ ul#apps
         font-weight normal
         line-height 2.5
         cursor pointer
-        // transition 0.3s all
+        transition 0.3s all
         &:hover
           background buttonColor
 
 
 a
   color textColor
+  text-decoration none
