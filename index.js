@@ -1,3 +1,4 @@
+require('dotenv').load()
 var superagent = require("superagent")
 var logfmt = require("logfmt")
 var express = require("express")

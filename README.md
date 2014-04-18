@@ -18,7 +18,7 @@ If you know of any apps with legit `app.json` files, add them to the list at
 
 ## OAuth Timeouts
 
-If you're trying to deply an app using Clone and it fails, your OAuth token may
+If you're trying to deploy an app using Clone and it fails, your OAuth token may
 have timed out. You'll need to hit
 [http://clone.herokuapp.com/auth/heroku/logout](clone.herokuapp.com/auth/heroku/logout)
 to log out and log back in with a new token.
@@ -28,5 +28,5 @@ to log out and log back in with a new token.
 ```sh
 npm install
 cp .env.sample .env # then add missing values
-foreman run npm start
+npm start
 ```
