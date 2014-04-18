@@ -30,6 +30,12 @@ linkColor = g1
 
 desktopWidth = 1000px
 
+appCardWidth = 280px
+appLogoWidth = 200px
+
+appCardWidthSingle = 480px
+appLogoWidthSingle = 400px
+
 // Layout
 //---------------------------------------------------------
 
@@ -48,21 +54,14 @@ body
   padding 0
   color textColor
 
-  background rgb(69,61,128)
-  background -moz-linear-gradient(top,  g1 0%,  g2 100%)
-  background -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
-  background -webkit-linear-gradient(top,  g1 0%, g2 100%)
-  background -o-linear-gradient(top,  g1 0%, g2 100%)
-  background -ms-linear-gradient(top,  g1 0%, g2 100%)
-  background linear-gradient(to bottom,  g1 0%, g2 100%)
-  // background #603F8B
-
-section
-  // position relative
-  // margin 0 auto
-  // max-width desktopWidth
-  // padding 0
-  // background black
+  // background rgb(69,61,128)
+  // background -moz-linear-gradient(top,  g1 0%,  g2 100%)
+  // background -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
+  // background -webkit-linear-gradient(top,  g1 0%, g2 100%)
+  // background -o-linear-gradient(top,  g1 0%, g2 100%)
+  // background -ms-linear-gradient(top,  g1 0%, g2 100%)
+  // background linear-gradient(to bottom,  g1 0%, g2 100%)
+  background #603F8B
 
 header
   float none
@@ -102,7 +101,7 @@ ul#apps
 
   > li
     background #EEE
-    max-width 280px
+    max-width appCardWidth
     float left
     margin 20px
     position relative
@@ -122,15 +121,15 @@ ul#apps
       cursor pointer
       display block
       position relative
-      width 280px
-      height 280px
+      width appCardWidth
+      height appCardWidth
       background appBackgroundColor
       border-radius 5px
       border-bottom 1px solid #CCC
 
     img
-      max-width 200px
-      max-height 200px
+      max-width appLogoWidth
+      max-height appLogoWidth
       position relative
       top 50%
       left 50%
@@ -192,6 +191,17 @@ ul#apps
         &:hover
           background buttonColor
 
+ul#apps.single
+
+  > li
+    max-width appCardWidthSingle
+
+  a.logo
+    width appCardWidthSingle
+    height appCardWidthSingle
+  img
+    max-width appLogoWidthSingle
+    max-height appLogoWidthSingle
 
 a
   color textColor

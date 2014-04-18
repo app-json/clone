@@ -35,6 +35,10 @@ app.get('/', function(req, res) {
   res.render('index')
 })
 
+app.get('/apps/:user/:repo', function(req, res) {
+  res.render('show')
+})
+
 app.post('/go', function(req, res) {
   var user = require('github-url-to-object')(req.body.source).user
   var repo = require('github-url-to-object')(req.body.source).repo
