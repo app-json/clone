@@ -30,12 +30,10 @@ $(function() {
       if (err) return console.error(err)
       if (!app.valid) return console.error(app.errors)
 
-      app.getAddonsPrices(function(err, prices) {
+      app.getAddonPrices(function(err, prices) {
         if (err) return console.error(err)
         app.prices = prices
-        $('#apps').append(ich.app(app))
-
-        console.log(app)
+        $('#apps').append(App.templates.app.render(app))
 
         if (repos.length === 1) {
           $('#apps .app').addClass('active')
@@ -53,27 +51,19 @@ $(function() {
 
   // When "deploy" is clicked, ajax submit form to local backend
   $("form.deploy").live("submit", function(event) {
-    var build_xhr
 
     // Prevent the form from submitting
     event.preventDefault()
 
-    build_xhr = $.post("/go", $(this).serialize())
+    var build_xhr = $.post("/go", $(this).serialize())
 
     return build_xhr.done((function(_this) {
       return function(build) {
         console.log(build)
-        if (build.app && build.app.name) {
-          $(_this)
-            .closest('.app')
-            .find('.output')
-            .html(ich.buildSuccess(build))
-        } else {
-          $(_this)
-            .closest('.app')
-            .find('.output')
-            .text(JSON.stringify(build,null,2))
-        }
+        $(_this)
+          .closest('.app')
+          .find('.output')
+          .html(App.templates.build.render(build))
       }
     })(this))
   })

@@ -10,10 +10,35 @@
   font-weight bold
   font-style normal
 
-// https://s3.amazonaws.com/design.heroku/logos/heroku-logo-purple.svg
-// https://s3.amazonaws.com/design.heroku/logos/heroku-logo-white.svg
-// https://s3.amazonaws.com/design.heroku/logos/heroku-mark-purple.svg
-// https://s3.amazonaws.com/design.heroku/logos/heroku-mark-white.svg
+column-count(n)
+  -webkit-column-count n
+  -moz-column-count n
+  column-count n
+
+column-gap(n)
+  -webkit-column-gap n
+  -moz-column-gap n
+  column-gap n
+
+column-fill(n)
+  -webkit-column-fill n
+  -moz-column-fill n
+  column-fill n
+
+column-break-inside(n)
+  -webkit-column-break-inside n
+  -moz-column-break-inside n
+  column-break-inside n
+
+transform(n)
+  -webkit-transform n
+  -moz-transform n
+  transform n
+
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
 
 g1 = rgba(69,61,128,1)
 g2 = rgba(99,64,140,1)
@@ -25,11 +50,11 @@ appHeadingColor = #333
 buttonColor = g2
 linkColor = g1
 
-desktopWidth = 1000px
-appCardWidth = 280px
-appLogoWidth = 200px
-appCardWidthSingle = 480px
-appLogoWidthSingle = 400px
+// desktopWidth = 1000px
+// appCardWidth = 280px
+// appLogoWidth = 200px
+// appCardWidthSingle = 480px
+// appLogoWidthSingle = 400px
 
 // Layout
 //---------------------------------------------------------
@@ -48,78 +73,39 @@ body
   margin 0
   padding 0
   color textColor
-
-  // background rgb(69,61,128)
-  // background -moz-linear-gradient(top,  g1 0%,  g2 100%)
-  // background -webkit-gradient(linear, left top, left bottom, color-stop(0%,g1), color-stop(100%, g2))
-  // background -webkit-linear-gradient(top,  g1 0%, g2 100%)
-  // background -o-linear-gradient(top,  g1 0%, g2 100%)
-  // background -ms-linear-gradient(top,  g1 0%, g2 100%)
-  // background linear-gradient(to bottom,  g1 0%, g2 100%)
   background #603F8B
 
 section
   position relative
 
-header
-  float none
-  overflow hidden
-  // background black
-  padding 30px 40px 0 40px
-
-  h1
-    float left
-    font-weight normal
-    font-size 22px
-    color headingColor
-    line-height 1
-    margin 0
-    padding 0
-    a
-      color headingColor
-      span
-        opacity 0.6
-
-    // display inline-block
-  ul
-    list-style none
-    // display inline-block
-    float right
-    margin 0
-    padding 0
-    > li
-      a
-        color headingColor
-
 ul#apps
-  display block
-  float none
-  margin 20px
+  margin 20px 20px
   padding 0
+  list-style none
+  column-count 2
+  column-gap 5px
+  column-fill auto
 
   a.repository, a.website
     display none
 
   &.single
-    // position relative
-    // margin auto 0
-    -webkit-transform translateX(-50%)
-    -moz-transform translateX(-50%)
     transform translateX(-50%)
     transition all 0.3s
     position absolute
     top 40px
     left 50%
-
-    // a.repository, a.website
-    //   display block
+    column-count 1
+    column-gap 5px
+    column-fill auto
 
   > li
+    // column-width 300px
+    max-width 300px
+    display inline-block
+    column-break-inside avoid
     background #EEE
-    max-width appCardWidth
-    float left
     margin 20px
-    position relative
     border-radius 5px
     list-style none
     -webkit-box-shadow 0px 2px 4px 0px rgba(50, 50, 50, 0.5)
@@ -136,15 +122,16 @@ ul#apps
       cursor pointer
       display block
       position relative
-      width appCardWidth
-      height appCardWidth
+      width 100%
+      height: 300px
       background appBackgroundColor
+      // background black
       border-radius 5px
       border-bottom 1px solid #CCC
 
     img
-      max-width appLogoWidth
-      max-height appLogoWidth
+      max-width 80%
+      max-height 80%
       position relative
       top 50%
       left 50%
@@ -162,20 +149,18 @@ ul#apps
       a
         color appHeadingColor
         text-decoration none
-
         display block
-        width appLogoWidth
+        // width appLogoWidth
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
-        // display none
 
     div.drawer
-      // background green
       transition all 0.3s
-      max-height 0
       overflow hidden
       margin-bottom 0
+      // margin-bottom 15px
+      max-height 0
 
     &.active
       div.drawer
@@ -192,6 +177,7 @@ ul#apps
         color linkColor
 
     form
+      // display none
       padding 0
       input
         outline none
@@ -202,9 +188,7 @@ ul#apps
         color white
         display inline-block
         position relative
-        -webkit-border-radius 2px
-        -moz-border-radius 2px
-        border-radius 5px
+        border-radius 2px
         font-size 14px
         font-weight normal
         line-height 2.5
@@ -214,16 +198,53 @@ ul#apps
           background buttonColor
 
 ul#apps.single
-
   > li
     max-width appCardWidthSingle
-
   a.logo
     width appCardWidthSingle
     height appCardWidthSingle
   img
     max-width appLogoWidthSingle
     max-height appLogoWidthSingle
+
+@media (min-width: 840px)
+  ul#apps
+    column-count: 3
+
+@media (min-width: 1120px)
+  ul#apps
+    column-count: 4
+
+@media (min-width: 1400px)
+  ul#apps
+    column-count: 5
+
+header
+  float none
+  overflow hidden
+  padding 30px 40px 0 40px
+
+  h1
+    float left
+    font-weight normal
+    font-size 22px
+    color headingColor
+    line-height 1
+    margin 0
+    padding 0
+    a
+      color headingColor
+      span
+        opacity 0.6
+
+  ul
+    list-style none
+    float right
+    margin 0
+    padding 0
+    > li
+      a
+        color headingColor
 
 a
   color textColor

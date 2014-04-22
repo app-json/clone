@@ -10,7 +10,7 @@ html
 
     //- Javascripts
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js")
-    script(src="//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10.3/ICanHaz.min.js")
+    //- script(src="//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10.3/ICanHaz.min.js")
     script(src="/scripts/vendor/app.js")
     script(src="/scripts/index.js")
 
@@ -29,48 +29,3 @@ html
 
     section
       block content
-
-
-script#app(type="text/html")
-
-  li.app
-
-    a.logo.activator
-      img(src="{{logo}}")
-
-    div.meta
-      h2
-        a.activator {{name}}
-
-      div.drawer
-
-        p {{description}}
-
-        {{#repository}}
-        a.repository(href="{{repository}}") {{repository}}
-        {{/repository}}
-
-        {{#website}}
-        a.website(href="{{website}}") {{website}}
-        {{/website}}
-
-        //- {{#prices}}
-        //- h3 Addons
-        //- ul.prices
-        //- {{#plans}}
-        //- li Plan
-        //- {{/plans}}
-        //- {{/prices}}
-
-        form.deploy
-          input(type="hidden" name="source" value="{{repository}}")
-          input(type="submit" value="Deploy for {{prices.totalPrice}}")
-
-        div.output
-
-script#buildSuccess(type="text/html")
-
-  p
-    | Your app is deploying to &nbsp;
-    a(href="https://{{app.name}}.herokuapp.com"){{app.name}}.herokuapp.com
-    | , and will be ready soon.
