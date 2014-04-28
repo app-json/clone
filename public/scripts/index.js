@@ -15,7 +15,8 @@ if (repo) {
     'zeke/ruby-rails-sample',
     'zeke/hound',
     'zeke/chaos-monkey-app-manifest',
-    'zeke/roots-buildpack-sample'
+    'zeke/roots-buildpack-sample',
+    'kennethreitz/httpbin'
   )
 }
 
