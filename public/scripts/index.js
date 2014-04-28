@@ -16,7 +16,8 @@ if (repo) {
     'zeke/hound',
     'zeke/chaos-monkey-app-manifest',
     'zeke/roots-buildpack-sample',
-    'kennethreitz/httpbin'
+    'kennethreitz/httpbin',
+    'zeke/moby'
   )
 }
 
