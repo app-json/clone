@@ -28,9 +28,9 @@ $(function() {
   for (i = 0; i < repos.length; i++) {
     repo = repos[i]
     App.fetch(repo, function(err, app) {
+      if (err) return console.error(app, err)
+      if (!app.valid) return console.error(app, app.errors)
       apps.push(app)
-      if (err) return console.error(err)
-      if (!app.valid) return console.error(app.errors)
 
       app.getAddonPrices(function(err, prices) {
         if (err) return console.error(err)
