@@ -53,8 +53,8 @@ linkColor = g1
 // desktopWidth = 1000px
 // appCardWidth = 280px
 // appLogoWidth = 200px
-// appCardWidthSingle = 480px
-// appLogoWidthSingle = 400px
+appCardWidthSingle = 480px
+appLogoWidthSingle = 400px
 
 // Layout
 //---------------------------------------------------------
@@ -88,16 +88,6 @@ ul#apps
 
   a.repository, a.website
     display none
-
-  &.single
-    transform translateX(-50%)
-    transition all 0.3s
-    position absolute
-    top 40px
-    left 50%
-    column-count 1
-    column-gap 5px
-    column-fill auto
 
   > li
     // column-width 300px
@@ -143,7 +133,7 @@ ul#apps
       padding 0 15px
 
     h2
-      font-size 16px
+      font-size 18px
       font-weight bold
       color appHeadingColor
       a
@@ -154,6 +144,35 @@ ul#apps
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
+
+    h3
+      font-size 16px
+      font-weight normal
+      color appHeadingColor
+      margin 0
+      padding 15px 0 5px 0
+
+    ul.addons
+      margin 0 0 15px 0
+      padding 0
+      list-style none
+      display none
+      > li
+        position relative
+        line-height 4
+        font-size 14px
+        border-bottom 1px solid #DDD
+        // background blue
+        padding-left 36px
+        img
+          position absolute
+          top 50%
+          left 16px
+          max-width 32px
+          max-height 32px
+        span.price
+          font-style italic
+          opacity 0.5
 
     div.drawer
       transition all 0.3s
@@ -197,15 +216,32 @@ ul#apps
         &:hover
           background buttonColor
 
-ul#apps.single
-  > li
-    max-width appCardWidthSingle
-  a.logo
-    width appCardWidthSingle
-    height appCardWidthSingle
-  img
-    max-width appLogoWidthSingle
-    max-height appLogoWidthSingle
+  &.single
+    transform translateX(-50%)
+    transition all 0.3s
+    position absolute
+    top 40px
+    left 50%
+    column-count 1
+    column-gap 5px
+    column-fill auto
+
+    > li
+      max-width appCardWidthSingle
+    a.logo
+      width appCardWidthSingle
+      height appCardWidthSingle
+    img
+      max-width appLogoWidthSingle
+      max-height appLogoWidthSingle
+    ul.addons
+      display block
+
+    form
+      input
+        border-radius 5px
+        background buttonColor
+        line-height 3
 
 @media (min-width: 840px)
   ul#apps
