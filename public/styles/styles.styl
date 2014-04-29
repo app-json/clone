@@ -1,60 +1,6 @@
-@font-face
-  font-family 'benton'
-  src url('https://s3.amazonaws.com/design.heroku/fonts/bentonsans-regular.woff') format('woff')
-  font-weight normal
-  font-style normal
-
-@font-face
-  font-family 'benton'
-  src url('https://s3.amazonaws.com/design.heroku/fonts/bentonsans-medium.woff') format('woff')
-  font-weight bold
-  font-style normal
-
-column-count(n)
-  -webkit-column-count n
-  -moz-column-count n
-  column-count n
-
-column-gap(n)
-  -webkit-column-gap n
-  -moz-column-gap n
-  column-gap n
-
-column-fill(n)
-  -webkit-column-fill n
-  -moz-column-fill n
-  column-fill n
-
-column-break-inside(n)
-  -webkit-column-break-inside n
-  -moz-column-break-inside n
-  column-break-inside n
-
-transform(n)
-  -webkit-transform n
-  -moz-transform n
-  transform n
-
-border-radius(n)
-  -webkit-border-radius n
-  -moz-border-radius n
-  border-radius n
-
-g1 = rgba(69,61,128,1)
-g2 = rgba(99,64,140,1)
-backgroundColor = rgba(#6762A6, 0.4)
-appBackgroundColor = #FFF
-headingColor = #FFF
-textColor = #666
-appHeadingColor = #333
-buttonColor = g2
-linkColor = g1
-
-// desktopWidth = 1000px
-// appCardWidth = 280px
-// appLogoWidth = 200px
-appCardWidthSingle = 480px
-appLogoWidthSingle = 400px
+@import "_mixins.styl"
+@import "_fonts.styl"
+@import "_config"
 
 // Layout
 //---------------------------------------------------------
@@ -115,7 +61,6 @@ ul#apps
       width 100%
       height: 300px
       background appBackgroundColor
-      // background black
       border-radius 5px
       border-bottom 1px solid #CCC
 
@@ -140,7 +85,7 @@ ul#apps
         color appHeadingColor
         text-decoration none
         display block
-        // width appLogoWidth
+        max-width 90%
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
@@ -158,21 +103,22 @@ ul#apps
       list-style none
       display none
       > li
-        position relative
         line-height 4
         font-size 14px
-        border-bottom 1px solid #DDD
-        // background blue
-        padding-left 36px
-        img
-          position absolute
-          top 50%
-          left 16px
-          max-width 32px
-          max-height 32px
-        span.price
-          font-style italic
-          opacity 0.5
+        border-top 1px solid #DDD
+        a
+          display block
+          position relative
+          padding-left 38px
+          img
+            position absolute
+            top 50%
+            left 16px
+            max-width 32px
+            max-height 32px
+          span.price
+            font-style italic
+            opacity 0.5
 
     div.drawer
       transition all 0.3s
