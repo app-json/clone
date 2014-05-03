@@ -10,14 +10,15 @@ if (repo) {
   repos.push(
     'heroku-examples/geosockets',
     'heroku/node-js-sample',
+    'kennethreitz/httpbin',
     'ryanbrainard/forceworkbench',
     'zeke/harp-slideshow-template',
     'zeke/ruby-rails-sample',
     'zeke/hound',
     'zeke/chaos-monkey-app-manifest',
     'zeke/roots-buildpack-sample',
-    'kennethreitz/httpbin',
-    'zeke/moby'
+    'zeke/moby',
+    'zeke/goinstant-buildpack-example'
   )
 }
 
