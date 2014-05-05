@@ -8,12 +8,11 @@ if (repo) {
   repos.push([repo[1], repo[2]].join("/"))
 } else {
   repos.push(
-    'heroku-examples/geosockets',
     'heroku/node-js-sample',
+    'heroku/ruby-rails-sample',
     'kennethreitz/httpbin',
     'ryanbrainard/forceworkbench',
     'zeke/harp-slideshow-template',
-    'zeke/ruby-rails-sample',
     'zeke/hound',
     'zeke/chaos-monkey-app-manifest',
     'zeke/roots-buildpack-sample',
