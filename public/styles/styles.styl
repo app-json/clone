@@ -25,19 +25,28 @@ section
   position relative
 
 ul#apps
-  margin 20px 20px
+  margin 20px auto
   padding 0
   list-style none
-  column-count 2
+  column-count 1
   column-gap 5px
   column-fill auto
+  max-width 320px
+
+  @media (min-width: 640px)
+    max-width 640px
+    column-count: 2
+
+  @media (min-width: 960px)
+    max-width 960px
+    column-count: 3
 
   a.repository, a.website
     display none
 
   > li
     // column-width 300px
-    max-width 300px
+    max-width 280px
     display inline-block
     column-break-inside avoid
     background #EEE
@@ -104,7 +113,7 @@ ul#apps
       margin 0 0 15px 0
       padding 0
       list-style none
-      display none
+      // display none
       > li
         line-height 4
         font-size 14px
@@ -113,6 +122,9 @@ ul#apps
           display block
           position relative
           padding-left 38px
+          text-overflow ellipsis
+          overflow hidden
+          white-space nowrap
           img
             position absolute
             top 50%
@@ -165,44 +177,33 @@ ul#apps
         &:hover
           background buttonColor
 
-  &.single
-    transform translateX(-50%)
-    transition all 0.3s
-    position absolute
-    top 40px
-    left 50%
-    column-count 1
-    column-gap 5px
-    column-fill auto
+  // &.single
+  //   transform translateX(-50%)
+  //   transition all 0.3s
+  //   position absolute
+  //   top 40px
+  //   left 50%
+  //   column-count 1
+  //   column-gap 5px
+  //   column-fill auto
+  //
+  //   > li
+  //     max-width appCardWidthSingle
+  //   a.logo
+  //     width appCardWidthSingle
+  //     height appCardWidthSingle
+  //   img
+  //     max-width appLogoWidthSingle
+  //     max-height appLogoWidthSingle
+  //   ul.addons
+  //     display block
+  //
+  //   form
+  //     input
+  //       border-radius 5px
+  //       background buttonColor
+  //       line-height 3
 
-    > li
-      max-width appCardWidthSingle
-    a.logo
-      width appCardWidthSingle
-      height appCardWidthSingle
-    img
-      max-width appLogoWidthSingle
-      max-height appLogoWidthSingle
-    ul.addons
-      display block
-
-    form
-      input
-        border-radius 5px
-        background buttonColor
-        line-height 3
-
-@media (min-width: 840px)
-  ul#apps
-    column-count: 3
-
-@media (min-width: 1120px)
-  ul#apps
-    column-count: 4
-
-@media (min-width: 1400px)
-  ul#apps
-    column-count: 5
 
 header
   float none
@@ -210,9 +211,9 @@ header
   padding 30px 40px 0 40px
 
   h1
-    float left
-    font-weight normal
-    font-size 22px
+    font-weight bold
+    font-size 18px
+    text-align center
     color headingColor
     line-height 1
     margin 0
@@ -224,12 +225,15 @@ header
 
   ul
     list-style none
-    float right
+    position: fixed
     margin 0
     padding 0
+    top 20px
+    right 20px
+    z-index 10
     > li
       a
-        color headingColor
+        color rgba(headingColor, 0.5)
 
 a
   color textColor

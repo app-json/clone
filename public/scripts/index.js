@@ -5,7 +5,7 @@ $(function() {
   $.getJSON("http://app-registry.herokuapp.com/apps", function(urls) {
 
     console.log(urls)
-    
+
     urls.forEach(function(url){
       App.fetch(url, function(err, app) {
         if (err) return console.error(app, err)

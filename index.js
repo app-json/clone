@@ -31,6 +31,8 @@ app.use(bouncer.router)
 app.use(express.static(__dirname + "/public"))
 app.use(harp.mount(__dirname + "/public"))
 
+var apps = []
+
 app.get('/', function(req, res) {
   res.render('index')
 })
