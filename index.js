@@ -1,8 +1,9 @@
 require('dotenv').load()
-var superagent = require("superagent")
+// var superagent = require("superagent")
 var logfmt = require("logfmt")
 var express = require("express")
 var harp = require("harp")
+var Cloner = require("app-cloner-heroku")
 var app = express()
 var bouncer = require('heroku-bouncer')({
   herokuOAuthID      : process.env.HEROKU_OAUTH_ID,
@@ -41,21 +42,8 @@ app.get('/apps/:user/:repo', function(req, res) {
   res.render('show')
 })
 
-app.post('/go', function(req, res) {
-  var user = require('github-url-to-object')(req.body.source).user
-  var repo = require('github-url-to-object')(req.body.source).repo
-  var tarball="https://api.github.com/repos/" + user + "/" + repo + "/tarball"
-
-  superagent
-    .post('https://api.heroku.com/app-setups')
-    .set('Accept', 'application/vnd.heroku+json; version=3')
-    .set('Content-Type', 'application/json')
-    .auth('', req['heroku-bouncer'].token)
-    .send({source_blob:{url:tarball}})
-    .end(function(buildRes){
-      // console.log("buildRes.body", buildRes.body)
-      res.json(buildRes.body)
-    })
+app.get("/token", function(req, res){
+  res.json(req['heroku-bouncer'].token)
 })
 
 app.listen(app.get("port"), function() {
