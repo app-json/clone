@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "bundle": "watchify public/scripts/index.js -o public/scripts/index.browserified.js -v",
     "fetch-app-module": "curl https://raw.githubusercontent.com/heroku/apps/master/dist/app.js > ./public/scripts/vendor/app.js"
   },
   "repository": {
