@@ -2,10 +2,7 @@ window.apps = []
 
 $(function() {
 
-  $.getJSON("http://app-registry.herokuapp.com/apps", function(urls) {
-
-    console.log(urls)
-
+  var doIt = function(urls) {
     urls.forEach(function(url){
       App.fetch(url, function(err, app) {
         if (err) return console.error(app, err)
@@ -15,13 +12,25 @@ $(function() {
           if (err) return console.error(app, err)
           app.prices = prices
           $('#apps').append(App.templates.app.render(app))
-          // if (urls.length === 1) $('#apps .app').addClass('active')
+          if (urls.length === 1) {
+            $('#apps .app').addClass('active')
+            $('#apps').addClass('single')
+          }
         })
       })
     })
+  }
 
-  })
+  var singleApp = location.pathname.match(/\/apps\/(.*)/)
 
+  if (singleApp) {
+    urls = [singleApp[1]]
+    doIt(urls)
+  } else {
+    $.getJSON("http://app-registry.herokuapp.com/apps", function(urls) {
+      doIt(urls)
+    })
+  }
 
   // When an app is clicked, display a "deploy" button
   $(".app a.activator").live("click", function(event) {

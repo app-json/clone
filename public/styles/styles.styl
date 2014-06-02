@@ -35,11 +35,18 @@ ul#apps
 
   @media (min-width: 640px)
     max-width 640px
-    column-count: 2
+    column-count 2
 
   @media (min-width: 960px)
     max-width 960px
-    column-count: 3
+    column-count 3
+
+  &.single
+    max-width 480px
+    column-count 1
+    > li
+      min-width 440px
+      max-width 440px
 
   a.repository, a.website
     display none

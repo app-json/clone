@@ -53,7 +53,6 @@ app.post('/go', function(req, res) {
     .auth('', req['heroku-bouncer'].token)
     .send({source_blob:{url:tarball}})
     .end(function(buildRes){
-      // console.log("buildRes.body", buildRes.body)
       res.json(buildRes.body)
     })
 })
