@@ -2,7 +2,7 @@ window.apps = []
 
 $(function() {
 
-  var doIt = function(urls) {
+  var fetchApps = function(urls) {
     urls.forEach(function(url){
       App.fetch(url, function(err, app) {
         if (err) return console.error(app, err)
@@ -23,12 +23,15 @@ $(function() {
 
   var singleApp = location.pathname.match(/\/apps\/(.*)/)
 
-  if (singleApp) {
+  if (document.referrer && document.referrer.match("github.com")){
+    urls = [document.referrer]
+    fetchApps(urls)
+  } else if (singleApp) {
     urls = [singleApp[1]]
-    doIt(urls)
+    fetchApps(urls)
   } else {
     $.getJSON("http://app-registry.herokuapp.com/apps", function(urls) {
-      doIt(urls)
+      fetchApps(urls)
     })
   }
 
