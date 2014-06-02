@@ -27953,6 +27953,25 @@ $ = require('zepto-browserify').$
 
 domready(function(){
 
+  window.socket = new WebSocket(location.origin.replace(/^http/, 'ws'))
+
+  socket.onopen = function(event) {
+    console.log("onopen", event)
+  }
+
+  socket.onmessage = function(event) {
+    console.log("onmessage", event)
+    // users = JSON.parse(event.data).map(JSON.parse)
+  }
+
+  socket.onerror = function(error) {
+    console.error(error)
+  }
+
+  socket.onclose = function(event) {
+    console.log("onclose", event)
+  }
+
   superagent
     .get("http://app-registry.herokuapp.com/apps")
     .end(function(err, res) {
@@ -27974,7 +27993,6 @@ domready(function(){
       })
     })
 
-
   // When an app is clicked, display a "deploy" button
   $(".app a.activator").live("click", function(event) {
     event.preventDefault()
@@ -27989,41 +28007,43 @@ domready(function(){
 
     $.getJSON("/token", function(token) {
 
-      var clone = Cloner.new({
+      var payload = {
         repo: _form.find("input[name='source']").val(),
         token: token
-      })
+      }
 
-      // console.log({
+      socket.send(JSON.stringify(payload))
+
+      // var clone = Cloner.new({
       //   repo: _form.find("input[name='source']").val(),
       //   token: token
       // })
-
-      clone.on("start", function(payload){
-        console.log("start", payload)
-      })
-
-      clone.on("create", function(build){
-        console.log("create", build)
-      })
-
-      clone.on("create", function(build){
-        console.log("create", build)
-      })
-
-      clone.on("pending", function(){
-        console.log("pending")
-      })
-
-      clone.on("succeeded", function(build){
-        console.log("succeeded", build)
-      })
-
-      clone.on("error", function(error){
-        console.error(error)
-      })
-
-      clone.start()
+      //
+      // clone.on("start", function(payload){
+      //   console.log("start", payload)
+      // })
+      //
+      // clone.on("create", function(build){
+      //   console.log("create", build)
+      // })
+      //
+      // clone.on("create", function(build){
+      //   console.log("create", build)
+      // })
+      //
+      // clone.on("pending", function(){
+      //   console.log("pending")
+      // })
+      //
+      // clone.on("succeeded", function(build){
+      //   console.log("succeeded", build)
+      // })
+      //
+      // clone.on("error", function(error){
+      //   console.error(error)
+      // })
+      //
+      // clone.start()
 
     })
 

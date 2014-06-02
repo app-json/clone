@@ -1,7 +1,8 @@
 require('dotenv').load()
-// var superagent = require("superagent")
 var logfmt = require("logfmt")
 var express = require("express")
+var http = require("http")
+var ws = require("ws").Server
 var harp = require("harp")
 var Cloner = require("app-cloner-heroku")
 var app = express()
@@ -32,7 +33,19 @@ app.use(bouncer.router)
 app.use(express.static(__dirname + "/public"))
 app.use(harp.mount(__dirname + "/public"))
 
-var apps = []
+// var apps = []
+
+// HTTP Server
+var server = http.createServer(app)
+
+// Websockets Server
+var socketServer = new ws({server: server})
+socketServer.on("connection", function(socket) {
+  console.log("connection")
+  socket.on('message', function(data, flags) {
+    console.log("message", data, flags)
+  })
+})
 
 app.get('/', function(req, res) {
   res.render('index')
@@ -46,6 +59,6 @@ app.get("/token", function(req, res){
   res.json(req['heroku-bouncer'].token)
 })
 
-app.listen(app.get("port"), function() {
+server.listen(app.get("port"), function() {
   console.log("Clone is running at localhost:" + app.get("port"))
 })
