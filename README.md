@@ -9,12 +9,12 @@ A simple UI for cloning app.json apps.
 to include your Heroku OAuth token (API key) when sending build requests to [nyata](https://github.com/heroku/nyata).
 - Clone uses [node-heroku-bouncer](https://github.com/jclem/node-heroku-bouncer) to do OAuth
 
-For more clarity, check out the [client](/public/scripts/app.coffee) and [server](/index.js) code.
+For more clarity, check out the [client](/public/scripts/index.js) and [server](/index.js) code.
 
 ## Add Your Apps
 
-If you know of any apps with legit `app.json` files, add them to the list at
-[/public/scripts/app.coffee](/public/scripts/app.coffee)
+If you know of any apps with legit `app.json` files, add them to the registry wiki page at
+[github.com/app-json/app.json/wiki/Registry](https://github.com/app-json/app.json/wiki/Registry)
 
 ## OAuth Timeouts
 
