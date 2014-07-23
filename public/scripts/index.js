@@ -35,29 +35,4 @@ $(function() {
     })
   }
 
-  // When an app is clicked, display a "deploy" button
-  $(".app a.activator").live("click", function(event) {
-    event.preventDefault()
-    $(this).closest('.app').toggleClass("active")
-  })
-
-  // When "deploy" is clicked, ajax submit form to local backend
-  $("form.deploy").live("submit", function(event) {
-
-    // Prevent the form from submitting
-    event.preventDefault()
-
-    var build_xhr = $.post("/go", $(this).serialize())
-
-    return build_xhr.done((function(_this) {
-      return function(build) {
-        console.log(build)
-        $(_this)
-          .closest('.app')
-          .find('.output')
-          .html(App.templates.build.render(build))
-      }
-    })(this))
-  })
-
 })
