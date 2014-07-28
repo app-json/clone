@@ -19,7 +19,7 @@ body
   margin 0
   padding 0
   color textColor
-  background #603F8B
+  background backgroundColor
 
 section
   position relative
@@ -52,7 +52,6 @@ ul#apps
     display none
 
   > li
-    // column-width 300px
     max-width 280px
     display inline-block
     column-break-inside avoid
@@ -120,7 +119,6 @@ ul#apps
       margin 0 0 15px 0
       padding 0
       list-style none
-      // display none
       > li
         line-height 4
         font-size 14px
@@ -147,7 +145,6 @@ ul#apps
       overflow hidden
       margin-bottom 0
       margin-bottom 15px
-      // max-height 0
 
     &.active
       div.drawer
@@ -164,7 +161,6 @@ ul#apps
         color linkColor
 
     form
-      // display none
       padding 0
       input
         outline none
@@ -183,34 +179,6 @@ ul#apps
         transition 0.3s all
         &:hover
           background buttonColor
-
-  // &.single
-  //   transform translateX(-50%)
-  //   transition all 0.3s
-  //   position absolute
-  //   top 40px
-  //   left 50%
-  //   column-count 1
-  //   column-gap 5px
-  //   column-fill auto
-  //
-  //   > li
-  //     max-width appCardWidthSingle
-  //   a.logo
-  //     width appCardWidthSingle
-  //     height appCardWidthSingle
-  //   img
-  //     max-width appLogoWidthSingle
-  //     max-height appLogoWidthSingle
-  //   ul.addons
-  //     display block
-  //
-  //   form
-  //     input
-  //       border-radius 5px
-  //       background buttonColor
-  //       line-height 3
-
 
 header
   float none
