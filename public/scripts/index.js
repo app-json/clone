@@ -30,7 +30,7 @@ $(function() {
     urls = [singleApp[1]]
     fetchApps(urls)
   } else {
-    $.getJSON("http://app-registry.herokuapp.com/apps", function(urls) {
+    $.getJSON("//app-registry.herokuapp.com/apps", function(urls) {
       fetchApps(urls)
     })
   }
